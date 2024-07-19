@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class TipRoute extends StatelessWidget {
-  const TipRoute({
-    Key? key, // 接收一个text参数
-  }) : super(key: key);
+  const TipRoute({super.key, this.extraData});
+  final String? extraData;
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)!.settings.arguments;
-    var text = args is String ? args : "没有参数";
+    var text = extraData ?? "没有参数";
     return Scaffold(
       appBar: AppBar(
         title: const Text("提示"),
@@ -20,10 +19,7 @@ class TipRoute extends StatelessWidget {
             children: <Widget>[
               Text(text),
               ElevatedButton(
-                onPressed: () => Navigator.pop(
-                  context,
-                  "pop的返回值",
-                ),
+                onPressed: () => context.pop("text"),
                 child: const Text("返回"),
               )
             ],

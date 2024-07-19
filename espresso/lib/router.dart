@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AppRoute extends StatefulWidget {
-  const AppRoute({Key? key}) : super(key: key);
+  const AppRoute({super.key});
 
   @override
   AppRouteState createState() => AppRouteState();
 }
 
 class AppRouteState extends State<AppRoute> {
-  void handleButton() async {
-    Navigator.of(context).pushNamed("tip_route", arguments: "hi");
-  }
-
+  String msg = "没有参数";
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)!.settings.arguments;
-    var text = args is String ? args : "没有参数";
     return Scaffold(
       appBar: AppBar(
         title: const Text("New route"),
@@ -23,9 +19,17 @@ class AppRouteState extends State<AppRoute> {
       body: Center(
           child: Column(children: <Widget>[
         const Text("This is new route"),
-        Text(text),
+        Text(msg),
         ElevatedButton(
-          onPressed: handleButton,
+          onPressed: () async {
+            final res =
+                await context.push<String?>('/tip_route', extra: 'some text');
+            if (res != null) {
+              setState(() {
+                msg = res;
+              });
+            }
+          },
           child: const Text("打开新路由"),
         ),
       ])),

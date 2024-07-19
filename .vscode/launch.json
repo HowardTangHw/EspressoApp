@@ -9,7 +9,7 @@
       "type": "dart",
       "request": "launch",
       "program": "espresso/lib/main.dart",
-      "args": ["-d", "chrome"]
+      "args": ["-d", "chrome", "--web-enable-expression-evaluation"]
     },
     {
       "name": "espresso",

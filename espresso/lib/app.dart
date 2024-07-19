@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'router.dart';
+import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key, required this.title}) : super(key: key);
+  const Home({super.key, required this.title});
   final String title;
 
   @override
@@ -35,7 +35,7 @@ class HomeState extends State<Home> {
             ),
             TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, "app_route");
+                  context.push("/app_route");
                 },
                 child: const Text("open new route"))
           ],

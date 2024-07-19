@@ -1,62 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'app.dart';
 import 'router.dart';
 import 'tip_route.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
-  MainApp({super.key});
+final _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const Home(
+        title: 'Espresso',
+      ),
+    ),
+    GoRoute(
+      path: '/app_route',
+      builder: (context, state) => const AppRoute(),
+    ),
+    GoRoute(
+      path: '/tip_route',
+      builder: (context, state) {
+        final extraData = state.extra as String?;
+        return TipRoute(extraData: extraData);
+      },
+    ),
+  ],
+);
 
-  final routes = {
-    '/': (context) => const Home(
-          title: 'Espresso',
-        ),
-    'app_route': (context) => const AppRoute(),
-    'tip_route': (context) => const TipRoute(),
-  };
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Espresso',
-      initialRoute: '/',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      onGenerateRoute: (settings) {
-        final String? name = settings.name;
-        final Widget Function(BuildContext)? pageContentBuilder = routes[name];
-
-        if (pageContentBuilder != null) {
-          if (settings.arguments != null) {
-            final Route route = MaterialPageRoute(
-              builder: (context) => pageContentBuilder(context),
-              settings: settings,
-            );
-            return route;
-          } else {
-            final Route route = MaterialPageRoute(
-              builder: (context) => pageContentBuilder(context),
-            );
-            return route;
-          }
-        } else {
-          // 返回一个空白页面
-          return MaterialPageRoute(
-            builder: (context) => Scaffold(
-              appBar: AppBar(
-                title: const Text('Page Not Found'),
-              ),
-              body: const Center(
-                child: Text('404 - Page Not Found'),
-              ),
-            ),
-          );
-        }
-      },
+      routerConfig: _router,
     );
   }
 }
