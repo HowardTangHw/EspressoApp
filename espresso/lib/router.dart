@@ -9,7 +9,7 @@ class AppRoute extends StatefulWidget {
 }
 
 class AppRouteState extends State<AppRoute> {
-  String msg = "没有参数";
+  String msg = "No Params";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class AppRouteState extends State<AppRoute> {
           child: Column(children: <Widget>[
         const Text("This is new route"),
         Text(msg),
-        ElevatedButton(
+        ElevatedButton.icon(
           onPressed: () async {
             final res =
                 await context.push<String?>('/tip_route', extra: 'some text');
@@ -30,7 +30,8 @@ class AppRouteState extends State<AppRoute> {
               });
             }
           },
-          child: const Text("打开新路由"),
+          icon: const Icon(Icons.send),
+          label: const Text("Push new Route"),
         ),
       ])),
     );

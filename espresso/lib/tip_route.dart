@@ -7,10 +7,10 @@ class TipRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var text = extraData ?? "没有参数";
+    var text = extraData ?? "No Params";
     return Scaffold(
       appBar: AppBar(
-        title: const Text("提示"),
+        title: const Text("Tips"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(18),
@@ -18,9 +18,10 @@ class TipRoute extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(text),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: () => context.pop("text"),
-                child: const Text("返回"),
+                icon: const Icon(Icons.arrow_back),
+                label: const Text("Back"),
               )
             ],
           ),

@@ -38,6 +38,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Espresso',
       theme: ThemeData(
+        fontFamily: 'Montserrat',
         primarySwatch: Colors.blueGrey,
       ),
       routerConfig: _router,
