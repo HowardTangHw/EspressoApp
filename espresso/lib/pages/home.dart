@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../components/progress.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -10,7 +11,17 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState(); // Call the superclass's initState method
+    //监听输入改变
+    _unameController.addListener(() {
+      print(_unameController.text);
+    });
+  }
+
   int _counter = 0;
+  final TextEditingController _unameController = TextEditingController();
 
   void _incrementCounter() {
     setState(() {
@@ -45,7 +56,8 @@ class HomeState extends State<Home> {
                 onPressed: () {
                   context.push("/app_route");
                 },
-                child: const Text("open new route"))
+                child: const Text("open new route")),
+            const ProgressComponent(),
           ],
         ),
       ),
