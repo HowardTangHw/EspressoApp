@@ -7,5 +7,6 @@
 ## TODO:
 
 - [ ] fquery
-- [ ] flutter_bloc
+- [ ] flutter_bloc || flutter_mobx
 - [ ] bottom_navy_bar
+- [ ] flutter_native_splash
