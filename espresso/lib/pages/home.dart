@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../components/progress.dart';
+import '../util/constants.dart' as constants;
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -43,7 +44,7 @@ class HomeState extends State<Home> {
               'You have pushed the button this many times:',
               style: TextStyle(
                   fontSize: 20,
-                  color: Colors.blueAccent,
+                  color: constants.Colors.primary,
                   decoration: TextDecoration.underline,
                   decorationStyle: TextDecorationStyle.dashed,
                   decorationColor: Colors.blueAccent),
