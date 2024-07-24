@@ -3,7 +3,7 @@
   "short_name": "espresso",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#bdcc92",
+  "background_color": "#fff",
   "theme_color": "#bdcc92",
   "description": "A new Flutter project.",
   "orientation": "portrait-primary",

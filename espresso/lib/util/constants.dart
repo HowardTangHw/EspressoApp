@@ -4,8 +4,8 @@ class Colors {
   static const primary = Color(0xFF3A474E);
   static const secondary = Color(0xFFBDCC92);
   static const accent = Color(0xFFEFA8B8);
-  static const background = Color(0xFF00A7E1);
-   static const MaterialColor primarySwatch = MaterialColor(
+  static const background = Color(0x00000000);
+  static const MaterialColor primarySwatch = MaterialColor(
     0xFF3A474E,
     <int, Color>{
       50: Color(0xFFE1E2E3),

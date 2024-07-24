@@ -14,8 +14,16 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Espresso',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: constants.Colors.secondary,
+          brightness: Brightness.light,
+        ),
         fontFamily: 'Montserrat',
         primarySwatch: constants.Colors.primarySwatch,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: constants.Colors.background,
+        ),
       ),
       routerConfig: AppRouter.router,
     );
