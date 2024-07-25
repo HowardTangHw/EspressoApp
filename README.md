@@ -1,4 +1,6 @@
-# Espresso App
+# ![ico](assets/images/Logo/SVG/Favicon-32x32.svg) Espresso App
+
+![LOGO](assets/images/Logo/SVG/main-logo.svg)
 
 ## https://espresso.haowenmogu.chat/
 
@@ -10,7 +12,7 @@
 - [ ] flutter_bloc || flutter_mobx
 - [ ] bottom_navy_bar
 - [ ] flutter_native_splash
-- [ ] git commit msg valid 
+- [ ] git commit msg valid
 
 ## Requirement
 
