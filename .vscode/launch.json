@@ -8,7 +8,7 @@
       "name": "espresso for web",
       "type": "dart",
       "request": "launch",
-      "program": "espresso/lib/main.dart",
+      "program": "./lib/main.dart",
       "args": ["-d", "chrome", "--web-enable-expression-evaluation"]
     },
     {
