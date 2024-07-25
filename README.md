@@ -12,7 +12,7 @@
 - [ ] flutter_bloc || flutter_mobx
 - [ ] bottom_navy_bar
 - [ ] flutter_native_splash
-- [ ] git commit msg valid
+- [x] husky + commitlint
 
 ## Requirement
 
