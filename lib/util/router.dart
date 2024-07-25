@@ -5,6 +5,7 @@ import '../pages/tip_route.dart';
 import '../pages/box_list.dart';
 import '../pages/position.dart';
 import '../pages/scrollcontroller.dart';
+import '../pages/custom_scroll_view.dart';
 
 class AppRouter {
   static final router = GoRouter(
@@ -42,6 +43,12 @@ class AppRouter {
               path: 'scollcontroller_example',
               builder: (context, state) {
                 return const ScrollControllerTestRoute();
+              },
+            ),
+            GoRoute(
+              path: 'custom_scroll_view',
+              builder: (context, state) {
+                return const CustomScrollViewPage();
               },
             ),
           ]),
