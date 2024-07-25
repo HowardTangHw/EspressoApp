@@ -36,30 +36,127 @@ class HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-              style: TextStyle(
-                  fontSize: 20,
-                  color: constants.Colors.primary,
-                  decoration: TextDecoration.underline,
-                  decorationStyle: TextDecorationStyle.dashed,
-                  decorationColor: Colors.blueAccent),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            TextButton(
-                onPressed: () {
-                  context.push("/app_route");
-                },
-                child: const Text("open new route")),
-            const ProgressComponent(),
-          ],
+      body: Container(
+        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
+                style: TextStyle(
+                    fontSize: 20,
+                    color: constants.Colors.primary,
+                    decoration: TextDecoration.underline,
+                    decorationStyle: TextDecorationStyle.dashed),
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                TextButton(
+                    onPressed: () {
+                      context.go("/app_route");
+                    },
+                    child: const Text("open new route")),
+                TextButton(
+                    onPressed: () {
+                      context.go("/box_list");
+                    },
+                    child: const Text("open box list")),
+                TextButton(
+                    onPressed: () {
+                      context.go("/position_example");
+                    },
+                    child: const Text("open Position")),
+              ]),
+              const ProgressComponent(),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(" hello world "),
+                      Text(" I am Jack "),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(" hello world "),
+                      Text(" I am Jack "),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    textDirection: TextDirection.rtl,
+                    children: [
+                      Text(" hello world "),
+                      Text(" I am Jack "),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        " hello world ",
+                        style: TextStyle(fontSize: 30.0),
+                      ),
+                      Text(" I am Jack "),
+                    ],
+                  ),
+                ],
+              ),
+              Container(
+                color: constants.Colors.secondary,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max, //有效，外层Colum高度为整个屏幕
+                    children: <Widget>[
+                      Container(
+                        color: constants.Colors.accent,
+                        child: const Column(
+                          mainAxisSize: MainAxisSize.max, //无效，内层Colum高度为实际高度
+                          children: <Widget>[
+                            Text("hello world "),
+                            Text("I am Jack "),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                  height: 100.0,
+                  child: Flex(direction: Axis.vertical, children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        height: 40.0,
+                        color: Colors.red,
+                      ),
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        height: 40.0,
+                        color: Colors.green,
+                      ),
+                    )
+                  ])),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
