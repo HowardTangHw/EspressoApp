@@ -71,6 +71,11 @@ class HomeState extends State<Home> {
                       context.go("/position_example");
                     },
                     child: const Text("open Position")),
+                TextButton(
+                    onPressed: () {
+                      context.go("/scollcontroller_example");
+                    },
+                    child: const Text("open scroll")),
               ]),
               const ProgressComponent(),
               const Column(
