@@ -38,7 +38,7 @@ class HomeState extends State<Home> {
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-        child: Center(
+        child: Scrollbar(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
@@ -55,7 +55,7 @@ class HomeState extends State<Home> {
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Wrap(children: [
                 TextButton(
                     onPressed: () {
                       context.go("/app_route");

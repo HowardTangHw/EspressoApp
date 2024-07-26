@@ -8,11 +8,13 @@
 
 ## Infra TODO:
 
-- [ ] fquery
+- [x] dio
+- [x] fquery
 - [ ] flutter_bloc || flutter_mobx
 - [ ] bottom_navy_bar
 - [ ] flutter_native_splash
 - [x] husky + commitlint
+- [x] Flutter Hooks
 
 ## Requirement
 
@@ -20,7 +22,7 @@
 
 ### Home Page
 
-- [ ] Topics(Unlimited loading)
+- [ ] Hots(Unlimited loading)
 
 ### Search Page
 
@@ -45,7 +47,10 @@
 
 [Github Api](https://api.github.com/)
 
-Topics:
+Hots:
 ```
 https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
 ```
+
+## JSON to Dart Model
+> https://javiercbk.github.io/json_to_dart/

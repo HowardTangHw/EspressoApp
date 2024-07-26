@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
+import '../util/constants.dart' as constants;
+import '../components/sliver_header_delegate.dart';
 
 class CustomScrollViewPage extends StatelessWidget {
   const CustomScrollViewPage({super.key});
+
+  // 构建固定高度的SliverList，count为列表项属相
+  Widget buildSliverList([int count = 5]) {
+    return SliverFixedExtentList(
+      itemExtent: 50,
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          return ListTile(title: Text('$index'));
+        },
+        childCount: count,
+      ),
+    );
+  }
+
+  // 构建 header
+  Widget buildHeader(int i, BuildContext context) {
+    return Container(
+      color: Colors.white,
+      alignment: Alignment.centerLeft,
+      child: Text("PersistentHeader $i"),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +35,15 @@ class CustomScrollViewPage extends StatelessWidget {
           // AppBar，包含一个导航栏.
           SliverAppBar(
             pinned: true, // 滑动到顶端时会固定住
-            expandedHeight: 250.0,
+            expandedHeight: 320.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text('Demo'),
-              background: Image.asset(
-                "assets/images/Logo/PNG/main-logo.png",
-                fit: BoxFit.cover,
+              title: const Text('Espresso'),
+              background: Container(
+                color: constants.Colors.secondary,
+                child: Image.asset(
+                  "assets/images/Logo/PNG/main-logo.png",
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
           ),
@@ -57,6 +84,26 @@ class CustomScrollViewPage extends StatelessWidget {
               childCount: 20,
             ),
           ),
+          buildSliverList(),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: SliverHeaderDelegate(
+              //有最大和最小高度
+              maxHeight: 80,
+              minHeight: 50,
+              child: buildHeader(1, context),
+            ),
+          ),
+          buildSliverList(),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: SliverHeaderDelegate.fixedHeight(
+              //固定高度
+              height: 50,
+              child: buildHeader(2, context),
+            ),
+          ),
+          buildSliverList(20),
         ],
       ),
     );

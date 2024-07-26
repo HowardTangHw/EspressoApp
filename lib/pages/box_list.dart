@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import '../components/hot_list.dart';
 
 class BoxList extends StatelessWidget {
   BoxList({super.key});
@@ -20,26 +21,12 @@ class BoxList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('GridView Example'),
-      ),
-      body: GridView.count(
-        crossAxisCount: 3, // 一行显示三个
-        children: List.generate(numbers.length, (index) {
-          return Container(
-            margin: const EdgeInsets.all(4.0),
-            width: 100,
-            height: 100,
-            color: getRandomColor(),
-            child: Center(
-              child: Text(
-                numbers[index].toString(),
-                style: const TextStyle(fontSize: 24, color: Colors.white),
-              ),
-            ),
-          );
-        }),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('GridView Example'),
+        ),
+        body: Container(
+          padding: const EdgeInsets.all(10.0),
+          child: const HotList(),
+        ));
   }
 }

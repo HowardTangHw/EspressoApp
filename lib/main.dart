@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'util/router.dart';
 import '../util/constants.dart' as constants;
+import 'package:fquery/fquery.dart'; 
+
+final queryClient = QueryClient(
+  defaultQueryOptions: DefaultQueryOptions(),
+);
 
 void main() {
-  runApp(const MainApp());
+  runApp(QueryClientProvider(queryClient: queryClient, child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {
