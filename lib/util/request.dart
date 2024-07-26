@@ -16,15 +16,15 @@ class DioClient {
     ));
 
     // 添加拦截器
-    dio.interceptors.add(
-      TalkerDioLogger(
-        settings: const TalkerDioLoggerSettings(
-          printRequestHeaders: true,
-          printResponseHeaders: true,
-          printResponseMessage: true,
-        ),
-      ),
-    );
+    // dio.interceptors.add(
+    //   TalkerDioLogger(
+    //     settings: const TalkerDioLoggerSettings(
+    //       printRequestHeaders: true,
+    //       printResponseHeaders: true,
+    //       printResponseMessage: true,
+    //     ),
+    //   ),
+    // );
   }
 
   Future<Response> get(String path,
