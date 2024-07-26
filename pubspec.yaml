@@ -14,8 +14,7 @@ dependencies:
   talker_dio_logger: ^4.3.4
   flutter_hooks: ^0.20.5
   fquery: ^1.4.0-beta.1
-  flutter_native_splash: ^2.4.1
-
+  flutter_native_splash: ^2.0.0
 
 dev_dependencies:
   flutter_test:
