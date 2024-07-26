@@ -8,7 +8,6 @@ Future<Hots> getHotList() async {
   final res = await DioClient()
       .get('/search/repositories?q=stars:>10000&sort=stars&order=desc');
   final obj = Hots.fromJson(res.data);
-  print('obj:$obj');
   return obj;
 }
 
@@ -18,7 +17,6 @@ class HotList extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final hotList = useQuery(['Hots'], getHotList);
-    print('hotList:$hotList');
     return Builder(
       builder: (context) {
         if (hotList.isLoading) {

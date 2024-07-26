@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:talker_dio_logger/talker_dio_logger.dart';
 import '../util/constants.dart' as constants;
 
 class DioClient {
