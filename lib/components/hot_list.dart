@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fquery/fquery.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../util/request.dart';
-import '../models/hots.dart';
-
-Future<Hots> getHotList() async {
-  final res = await DioClient()
-      .get('/search/repositories?q=stars:>10000&sort=stars&order=desc');
-  final obj = Hots.fromJson(res.data);
-  return obj;
-}
+import '../hooks/hots.dart';
 
 class HotList extends HookWidget {
   const HotList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final hotList = useQuery(['Hots'], getHotList);
+    final hotList = useGetHotList();
     return Builder(
       builder: (context) {
         if (hotList.isLoading) {
