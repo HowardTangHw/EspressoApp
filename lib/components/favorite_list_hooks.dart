@@ -4,7 +4,6 @@ import '../models/favorite_list.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fquery/fquery.dart';
 
-//
 class FavoriteListHooks extends HookWidget {
   const FavoriteListHooks({super.key});
 
@@ -26,14 +25,14 @@ class FavoriteListHooks extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final scrollController = useScrollController();
+    final page = useState(1);
     final items = useInfiniteQuery<FavoriteList, Error, int>(
       ['infinity'],
       (page) => fv.getFavoriteList(page: page),
       initialPageParam: 1,
       getNextPageParam: ((lastPage, allPages, lastPageParam, allPageParam) {
-        return allPages.length < (lastPage.totalCount ?? 0)
-            ? lastPage.page + 1
-            : null;
+        ++page.value;
+        return allPages.length < (lastPage.totalCount ?? 0) ? page.value : null;
       }),
     );
 
@@ -56,7 +55,6 @@ class FavoriteListHooks extends HookWidget {
       });
       return null;
     }, []);
-
     return SafeArea(
       child: Builder(
         builder: (context) {
@@ -64,8 +62,13 @@ class FavoriteListHooks extends HookWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (items.isError) return Text(items.error.toString());
-          final contents =
-              items.data?.pages.map((page) => page.items).toList() ?? [];
+          final contents = (items.data?.pages.expand((page) {
+                if (page.items != null) {
+                  return page.items!;
+                }
+                return [];
+              }).toList() ??
+              []);
           if (contents.isEmpty) return const Text('no data');
           return Column(
             children: [
@@ -80,15 +83,10 @@ class FavoriteListHooks extends HookWidget {
                     controller: scrollController,
                     itemCount: contents.length,
                     itemBuilder: ((context, index) {
-                      return listItem(contents[index] as Items);
+                      return listItem(contents[index]);
                     })),
               ),
-              if (items.isFetchingNextPage)
-                const SizedBox(
-                  height: 100,
-                  width: double.maxFinite,
-                  child: CircularProgressIndicator(),
-                ),
+              if (items.isFetchingNextPage) const CircularProgressIndicator()
             ],
           );
         },
