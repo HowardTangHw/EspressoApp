@@ -15,7 +15,7 @@ class FavoriteList extends StatefulWidget {
 }
 
 class FavoriteListState extends State<FavoriteList> {
-  static const _pageSize = 20;
+  static const _pageSize = 50;
 
   final PagingController<int, Items> _pagingController =
       PagingController(firstPageKey: 1);

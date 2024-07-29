@@ -2,7 +2,7 @@ import '../util/request.dart';
 import '../models/favorite_list.dart';
 import 'package:fquery/fquery.dart';
 
-Future<FavoriteList> getFavoriteList({int page = 1, int pageSize = 10}) async {
+Future<FavoriteList> getFavoriteList({int page = 1, int pageSize = 50}) async {
   final res = await DioClient().get(
     '/search/repositories',
     queryParameters: {
