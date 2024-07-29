@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import '../components/hot_list.dart';
 
 class BoxList extends StatelessWidget {
   BoxList({super.key});
@@ -26,7 +25,7 @@ class BoxList extends StatelessWidget {
         ),
         body: Container(
           padding: const EdgeInsets.all(10.0),
-          child: const HotList(),
+          child: const Text('Todo'),
         ));
   }
 }

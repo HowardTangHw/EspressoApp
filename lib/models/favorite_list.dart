@@ -1,11 +1,11 @@
-class Hots {
+class FavoriteList {
   int? totalCount;
   bool? incompleteResults;
   List<Items>? items;
 
-  Hots({this.totalCount, this.incompleteResults, this.items});
+  FavoriteList({this.totalCount, this.incompleteResults, this.items});
 
-  Hots.fromJson(Map<String, dynamic> json) {
+  FavoriteList.fromJson(Map<String, dynamic> json) {
     totalCount = json['total_count'];
     incompleteResults = json['incomplete_results'];
     if (json['items'] != null) {
@@ -15,6 +15,8 @@ class Hots {
       });
     }
   }
+
+  get page => null;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -93,7 +95,7 @@ class Items {
   bool? hasPages;
   bool? hasDiscussions;
   int? forksCount;
-  Null? mirrorUrl;
+  String? mirrorUrl;
   bool? archived;
   bool? disabled;
   int? openIssuesCount;

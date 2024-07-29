@@ -11,10 +11,12 @@
 - [x] dio
 - [x] fquery
 - [ ] flutter_bloc || flutter_mobx
-- [ ] [curved_navigation_bar](https://github.com/rafalbednarczuk/curved_navigation_bar) || [google_nav_bar](https://pub.dev/packages/google_nav_bar) || [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar) || [dot_navigation_bar](https://pub.dev/packages/dot_navigation_bar)
+- [x] [google_nav_bar](https://pub.dev/packages/google_nav_bar)
 - [x] flutter_native_splash
 - [x] husky + commitlint
 - [x] Flutter Hooks
+- [ ] hive
+- [x] infinite_scroll_pagination
 
 ## Requirement
 
