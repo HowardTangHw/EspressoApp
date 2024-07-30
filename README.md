@@ -24,7 +24,7 @@
 
 ### Home Page
 
-- [ ] Hots(Unlimited loading)
+- [ ] Favorite List(Unlimited loading)
 
 ### Search Page
 
@@ -49,7 +49,7 @@
 
 [Github Api](https://api.github.com/)
 
-Hots:
+Favorite List:
 
 ```
 https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
