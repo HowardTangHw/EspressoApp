@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../hooks/favorite_list.dart' as fv;
+import './favorite_list_item.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import '../models/favorite_list.dart';
 
@@ -44,28 +45,12 @@ class FavoriteListState extends State<FavoriteList> {
     }
   }
 
-  Widget listItem(Items item) {
-    return Builder(builder: (context) {
-      return Row(
-        children: [
-          Image(
-            image: NetworkImage(item.owner!.avatarUrl!),
-            width: 100.0,
-          ),
-          Text('id:${item.id}'),
-          Text(' name:${item.name}')
-        ],
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) => PagedListView<int, Items>(
         pagingController: _pagingController,
         builderDelegate: PagedChildBuilderDelegate<Items>(
-          itemBuilder: (context, item, index) => listItem(
-            item,
-          ),
+          itemBuilder: (context, item, index) =>
+              FavoriteListItem(item: item, index: index + 1),
         ),
       );
 
