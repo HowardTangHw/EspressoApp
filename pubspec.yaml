@@ -25,6 +25,7 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   commitlint_cli: ^0.7.1
   husky: ^0.1.7
+  msix: ^3.16.7
 
 flutter:
   uses-material-design: true

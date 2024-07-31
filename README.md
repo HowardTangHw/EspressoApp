@@ -62,3 +62,6 @@ https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
 ## Splash Command
 
 > flutter pub run flutter_native_splash:create
+
+## Windows command
+> dart run msix:create
