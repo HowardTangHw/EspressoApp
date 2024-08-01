@@ -31,12 +31,19 @@
       "type": "dart",
       "flutterMode": "release"
     },
-     {
-       "name": "espresso for macOS",
-       "type": "dart",
-       "request": "launch",
-       "program": "./lib/main.dart",
-       "args": ["-d", "macos"]
-     }
+    {
+      "name": "espresso for macOS",
+      "type": "dart",
+      "request": "launch",
+      "program": "./lib/main.dart",
+      "args": ["-d", "macos"]
+    },
+    {
+      "name": "espresso for iOS",
+      "type": "dart",
+      "request": "launch",
+      "program": "./lib/main.dart",
+      "args": ["-d", "iPhone 15"]
+    }
   ]
 }

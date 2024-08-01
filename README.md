@@ -17,7 +17,7 @@
 - [x] Flutter Hooks
 - [x] infinite_scroll_pagination
 - [x] MacOS
-- [ ] iOS
+- [x] iOS
 - [ ] Android
 - [ ] Windows
 
@@ -69,3 +69,9 @@ https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
 ## Windows command
 
 > dart run msix:create
+
+## iOS Command
+1. xcrun simctl list devices
+2. xcrun simctl boot "iPhone 15"
+3. flutter devices
+4. run `flutter run -d "iPhone 15" --machine`
