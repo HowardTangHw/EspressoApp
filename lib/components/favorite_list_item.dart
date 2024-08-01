@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../util/constants.dart' as constants;
 import '../util/util.dart' as util;
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
+import 'favorite_list_item_tag.dart';
 
 class Tag {
   final String count;
@@ -72,26 +73,8 @@ class FavoriteListItem extends StatelessWidget {
             children: [
               Wrap(
                 children: [
-                  ...tags.map(
-                    (tagItem) => Container(
-                        margin: const EdgeInsets.only(right: 4.0),
-                        padding: const EdgeInsets.only(bottom: 8, right: 8),
-                        child: Wrap(
-                          children: [
-                            Icon(
-                              tagItem.icon,
-                              size: 16,
-                            ),
-                            const SizedBox(width: 2),
-                            Text(
-                              tagItem.count,
-                              style: const TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        )),
-                  ),
+                  ...tags.map((tagItem) => FavoriteListItemTag(
+                      icon: tagItem.icon, text: tagItem.count)),
                 ],
               ),
               ConstrainedBox(
@@ -123,27 +106,22 @@ class FavoriteListItem extends StatelessWidget {
                 ),
               Container(
                 padding: const EdgeInsets.only(top: 5.0),
-                child: Wrap(
-                  children: item.topics!
-                      .take(3)
-                      .map((topic) => Container(
-                            margin: const EdgeInsets.only(right: 4.0, top: 5),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: constants.Colors.secondary,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Text(
-                              topic,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ))
-                      .toList(),
-                ),
+                child: Wrap(children: [
+                  ...item.topics!.take(3).map((topic) => FavoriteListItemTag(
+                        text: topic,
+                        margin: const EdgeInsets.only(right: 4.0, top: 5),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: constants.Colors.secondary,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                      ))
+                ]),
               )
             ],
           ),
