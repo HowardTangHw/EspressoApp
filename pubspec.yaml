@@ -20,6 +20,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   cupertino_icons: ^1.0.6
   get: ^4.6.6
+  fancy_shimmer_image: ^2.0.3
 
 dev_dependencies:
   flutter_test:

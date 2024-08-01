@@ -1,7 +1,7 @@
 import 'package:espresso/models/favorite_list.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
 import '../util/constants.dart' as constants;
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 
 class Tag {
   final int count;
@@ -17,17 +17,6 @@ class FavoriteListItem extends StatelessWidget {
   const FavoriteListItem({super.key, required this.item, this.index});
   final Items item;
   final int? index;
-
-  // 随机颜色生成器
-  Color getRandomColor() {
-    final Random random = Random();
-    return Color.fromARGB(
-      255,
-      random.nextInt(256),
-      random.nextInt(256),
-      random.nextInt(256),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +53,10 @@ class FavoriteListItem extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
-          child: Image(
-            image: NetworkImage(item.owner!.avatarUrl!),
+          child: FancyShimmerImage(
+            imageUrl: item.owner!.avatarUrl!,
             width: 100.0,
+            height: 100.0,
           ),
         ),
         const SizedBox(width: 8.0),
@@ -79,14 +69,8 @@ class FavoriteListItem extends StatelessWidget {
                   ...tags.map(
                     (tagItem) => Container(
                         margin: const EdgeInsets.only(right: 4.0),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                        padding:
+                            const EdgeInsets.only(top: 10, bottom: 8, right: 8),
                         child: Row(
                           children: [
                             Icon(
@@ -96,9 +80,8 @@ class FavoriteListItem extends StatelessWidget {
                             const SizedBox(width: 2),
                             Text(
                               '${tagItem.count}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 12,
-                                color: Colors.grey[600],
                               ),
                             ),
                           ],
@@ -124,34 +107,39 @@ class FavoriteListItem extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4.0),
-              ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: maxWidth - 100),
-                child: Text(
-                  'language: ${item.language}',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+              if (item.language != null && item.language!.isNotEmpty)
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: maxWidth - 100),
+                  child: Text(
+                    'language: ${item.language}',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
-              ),
-              Row(
-                children: [
-                  ...item.topics!.map((topic) => Container(
-                        margin: const EdgeInsets.only(right: 4.0),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: constants.Colors.secondary,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Text(
-                          topic,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )),
-                ],
-              ),
+              Container(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Row(
+                  children: item.topics!
+                      .take(3)
+                      .map((topic) => Container(
+                            margin: const EdgeInsets.only(right: 4.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: constants.Colors.secondary,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Text(
+                              topic,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ))
+                      .toList(),
+                ),
+              )
             ],
           ),
         ),
