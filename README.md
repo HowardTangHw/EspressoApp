@@ -65,6 +65,7 @@ https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
 ## Splash Command
 
 > flutter pub run flutter_native_splash:create
+**REMINDER: Please do not upload modifications to the site, as it has been enhanced separately**
 
 ## Windows command
 
