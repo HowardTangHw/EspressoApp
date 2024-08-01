@@ -20,7 +20,7 @@ class HomeState extends State<Home> {
   static final List<Widget> _widgetOptions = <Widget>[
     const FavoriteList(),
     const SearchPage(),
-    Text('profile'),
+    const Text('profile'),
   ];
   @override
   Widget build(BuildContext context) {

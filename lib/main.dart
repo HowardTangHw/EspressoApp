@@ -3,7 +3,6 @@ import 'util/router.dart';
 import '../util/constants.dart' as constants;
 import 'package:fquery/fquery.dart';
 import 'package:get/get.dart';
-import 'package:flutter/cupertino.dart';
 
 final queryClient = QueryClient(
   defaultQueryOptions: DefaultQueryOptions(),

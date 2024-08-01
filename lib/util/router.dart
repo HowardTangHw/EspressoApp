@@ -24,7 +24,7 @@ class AppRouter {
     GetPage(
       name: '/tip_route',
       page: () {
-        return TipRoute();
+        return const TipRoute();
       },
     ),
     GetPage(

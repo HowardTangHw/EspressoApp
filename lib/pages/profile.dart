@@ -16,13 +16,13 @@ class ProfilePage extends StatelessWidget {
                     child: SafeArea(
                       bottom: false,
                       child: GestureDetector(
-                        child: Icon(Icons.arrow_upward),
+                        child: const Icon(Icons.arrow_upward),
                         onTap: () =>
                             CupertinoScaffold.showCupertinoModalBottomSheet(
                           expand: false,
                           context: context,
                           backgroundColor: Colors.transparent,
-                          builder: (context) => ModalFit(),
+                          builder: (context) => const ModalFit(),
                         ),
                       ),
                     ),
@@ -38,7 +38,7 @@ class ModalWithScroll extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(middle: Text('Modal Page')),
+        navigationBar: const CupertinoNavigationBar(middle: Text('Modal Page')),
         child: SafeArea(
           bottom: false,
           child: ListView(
@@ -48,7 +48,7 @@ class ModalWithScroll extends StatelessWidget {
               context: context,
               tiles: List.generate(
                   100,
-                  (index) => ListTile(
+                  (index) => const ListTile(
                         title: Text('Item'),
                       )),
             ).toList(),
@@ -71,28 +71,28 @@ class ModalFit extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text('Edit'),
-            leading: Icon(Icons.edit),
+            title: const Text('Edit'),
+            leading: const Icon(Icons.edit),
             onTap: () => Navigator.of(context).pop(),
           ),
           ListTile(
-            title: Text('Copy'),
-            leading: Icon(Icons.content_copy),
+            title: const Text('Copy'),
+            leading: const Icon(Icons.content_copy),
             onTap: () => Navigator.of(context).pop(),
           ),
           ListTile(
-            title: Text('Cut'),
-            leading: Icon(Icons.content_cut),
+            title: const Text('Cut'),
+            leading: const Icon(Icons.content_cut),
             onTap: () => Navigator.of(context).pop(),
           ),
           ListTile(
-            title: Text('Move'),
-            leading: Icon(Icons.folder_open),
+            title: const Text('Move'),
+            leading: const Icon(Icons.folder_open),
             onTap: () => Navigator.of(context).pop(),
           ),
           ListTile(
-            title: Text('Delete'),
-            leading: Icon(Icons.delete),
+            title: const Text('Delete'),
+            leading: const Icon(Icons.delete),
             onTap: () => Navigator.of(context).pop(),
           )
         ],
