@@ -16,6 +16,10 @@
 - [x] husky + commitlint
 - [x] Flutter Hooks
 - [x] infinite_scroll_pagination
+- [x] MacOS
+- [ ] iOS
+- [ ] Android
+- [ ] Windows
 
 ## Requirement
 
