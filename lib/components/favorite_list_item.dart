@@ -44,17 +44,14 @@ class FavoriteListItem extends StatelessWidget {
   Widget listItem(BuildContext context, double maxWidth) {
     final List<Tag> tags = [
       Tag(
-          count: util.formatNumber(item.forksCount ?? 0),
-          icon: Icons.fork_right),
-      Tag(
           count: util.formatNumber(item.watchersCount ?? 0),
           icon: Icons.visibility),
       Tag(
+          count: util.formatNumber(item.forksCount ?? 0),
+          icon: Icons.fork_right),
+      Tag(
           count: util.formatNumber(item.stargazersCount ?? 0),
           icon: Icons.star),
-      Tag(
-          count: util.formatNumber(item.openIssuesCount ?? 0),
-          icon: Icons.bug_report),
     ];
 
     return Row(
