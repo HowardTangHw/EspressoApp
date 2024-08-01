@@ -28,5 +28,24 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSAllowsArbitraryLoads</key>
+	<true/>
+	<key>NSExceptionDomains</key>
+	<dict>
+			<key>github.com</key>
+					<dict>
+							<key>NSIncludesSubdomains</key>
+							<true/>
+							<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+							<true/>
+							<key>NSTemporaryExceptionMinimumTLSVersion</key>
+							<string>TLSv1.0</string>
+					</dict>
+	</dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<true/>
+	</dict>
 </dict>
 </plist>

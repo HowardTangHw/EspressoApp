@@ -6,13 +6,17 @@ class FavoriteList {
   FavoriteList({this.totalCount, this.incompleteResults, this.items});
 
   FavoriteList.fromJson(Map<String, dynamic> json) {
-    totalCount = json['total_count'];
-    incompleteResults = json['incomplete_results'];
-    if (json['items'] != null) {
-      items = <Items>[];
-      json['items'].forEach((v) {
-        items!.add(Items.fromJson(v));
-      });
+    try {
+      totalCount = json['total_count'];
+      incompleteResults = json['incomplete_results'];
+      if (json['items'] != null) {
+        items = <Items>[];
+        json['items'].forEach((v) {
+          items!.add(Items.fromJson(v));
+        });
+      }
+    } catch (e) {
+      print('JSON解析出错: $e');
     }
   }
 
@@ -194,7 +198,7 @@ class Items {
       this.score});
 
   Items.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'] is int ? json['id'] : int.parse(json['id'].toString());
     nodeId = json['node_id'];
     name = json['name'];
     fullName = json['full_name'];
@@ -248,9 +252,15 @@ class Items {
     cloneUrl = json['clone_url'];
     svnUrl = json['svn_url'];
     homepage = json['homepage'];
-    size = json['size'];
-    stargazersCount = json['stargazers_count'];
-    watchersCount = json['watchers_count'];
+    size = json['size'] is int
+        ? json['size']
+        : int.tryParse(json['size'].toString()) ?? 0;
+    stargazersCount = json['stargazers_count'] is int
+        ? json['stargazers_count']
+        : int.tryParse(json['stargazers_count'].toString()) ?? 0;
+    watchersCount = json['watchers_count'] is int
+        ? json['watchers_count']
+        : int.tryParse(json['watchers_count'].toString()) ?? 0;
     language = json['language'];
     hasIssues = json['has_issues'];
     hasProjects = json['has_projects'];
@@ -258,11 +268,15 @@ class Items {
     hasWiki = json['has_wiki'];
     hasPages = json['has_pages'];
     hasDiscussions = json['has_discussions'];
-    forksCount = json['forks_count'];
+    forksCount = json['forks_count'] is int
+        ? json['forks_count']
+        : int.tryParse(json['forks_count'].toString()) ?? 0;
     mirrorUrl = json['mirror_url'];
     archived = json['archived'];
     disabled = json['disabled'];
-    openIssuesCount = json['open_issues_count'];
+    openIssuesCount = json['open_issues_count'] is int
+        ? json['open_issues_count']
+        : int.tryParse(json['open_issues_count'].toString()) ?? 0;
     license =
         json['license'] != null ? License.fromJson(json['license']) : null;
     allowForking = json['allow_forking'];
@@ -270,13 +284,22 @@ class Items {
     webCommitSignoffRequired = json['web_commit_signoff_required'];
     topics = json['topics'].cast<String>();
     visibility = json['visibility'];
-    forks = json['forks'];
-    openIssues = json['open_issues'];
-    watchers = json['watchers'];
+    forks = json['forks'] is int
+        ? json['forks']
+        : int.tryParse(json['forks'].toString()) ?? 0;
+    openIssues = json['open_issues'] is int
+        ? json['open_issues']
+        : int.tryParse(json['open_issues'].toString()) ?? 0;
+    watchers = json['watchers'] is int
+        ? json['watchers']
+        : int.tryParse(json['watchers'].toString()) ?? 0;
     defaultBranch = json['default_branch'];
-    score = json['score'];
+    score = json['score'] is int
+        ? json['score']
+        : int.tryParse(json['score'].toString()) ?? 0;
   }
 
+  // toJson 方法保持不变
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
