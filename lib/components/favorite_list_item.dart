@@ -1,10 +1,11 @@
 import 'package:espresso/models/favorite_list.dart';
 import 'package:flutter/material.dart';
 import '../util/constants.dart' as constants;
+import '../util/util.dart' as util;
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 
 class Tag {
-  final int count;
+  final String count;
   final IconData icon;
 
   Tag({
@@ -42,10 +43,18 @@ class FavoriteListItem extends StatelessWidget {
 
   Widget listItem(BuildContext context, double maxWidth) {
     final List<Tag> tags = [
-      Tag(count: item.forksCount ?? 0, icon: Icons.fork_right),
-      Tag(count: item.watchersCount ?? 0, icon: Icons.visibility),
-      Tag(count: item.stargazersCount ?? 0, icon: Icons.star),
-      Tag(count: item.openIssuesCount ?? 0, icon: Icons.bug_report),
+      Tag(
+          count: util.formatNumber(item.forksCount ?? 0),
+          icon: Icons.fork_right),
+      Tag(
+          count: util.formatNumber(item.watchersCount ?? 0),
+          icon: Icons.visibility),
+      Tag(
+          count: util.formatNumber(item.stargazersCount ?? 0),
+          icon: Icons.star),
+      Tag(
+          count: util.formatNumber(item.openIssuesCount ?? 0),
+          icon: Icons.bug_report),
     ];
 
     return Row(
@@ -64,14 +73,13 @@ class FavoriteListItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              Wrap(
                 children: [
                   ...tags.map(
                     (tagItem) => Container(
                         margin: const EdgeInsets.only(right: 4.0),
-                        padding:
-                            const EdgeInsets.only(top: 10, bottom: 8, right: 8),
-                        child: Row(
+                        padding: const EdgeInsets.only(bottom: 8, right: 8),
+                        child: Wrap(
                           children: [
                             Icon(
                               tagItem.icon,
@@ -79,7 +87,7 @@ class FavoriteListItem extends StatelessWidget {
                             ),
                             const SizedBox(width: 2),
                             Text(
-                              '${tagItem.count}',
+                              tagItem.count,
                               style: const TextStyle(
                                 fontSize: 12,
                               ),
@@ -101,7 +109,7 @@ class FavoriteListItem extends StatelessWidget {
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: maxWidth - 100),
                 child: Text(
-                  'description: ${item.description}',
+                  '${item.description}',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
@@ -111,18 +119,18 @@ class FavoriteListItem extends StatelessWidget {
                 ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: maxWidth - 100),
                   child: Text(
-                    'language: ${item.language}',
+                    'Language: ${item.language}',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
                 ),
               Container(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: Wrap(
                   children: item.topics!
                       .take(3)
                       .map((topic) => Container(
-                            margin: const EdgeInsets.only(right: 4.0),
+                            margin: const EdgeInsets.only(right: 4.0, top: 5),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
