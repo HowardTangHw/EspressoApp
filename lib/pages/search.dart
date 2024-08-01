@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../components/progress.dart';
 import '../util/constants.dart' as constants;
+import 'package:get/get.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -27,27 +27,32 @@ class SearchPage extends StatelessWidget {
               Wrap(children: [
                 TextButton(
                     onPressed: () {
-                      context.go("/app_route");
+                      Get.toNamed("/profile");
+                    },
+                    child: const Text("profile")),
+                TextButton(
+                    onPressed: () {
+                      Get.toNamed("/app_route");
                     },
                     child: const Text("open new route")),
                 TextButton(
                     onPressed: () {
-                      context.go("/box_list");
+                      Get.toNamed("/box_list");
                     },
                     child: const Text("open box list")),
                 TextButton(
                     onPressed: () {
-                      context.go("/position_example");
+                      Get.toNamed("/position_example");
                     },
                     child: const Text("open Position")),
                 TextButton(
                     onPressed: () {
-                      context.go("/scollcontroller_example");
+                      Get.toNamed("/scollcontroller_example");
                     },
                     child: const Text("open scroll")),
                 TextButton(
                     onPressed: () {
-                      context.go("/custom_scroll_view");
+                      Get.toNamed("/custom_scroll_view");
                     },
                     child: const Text("open custom scroll")),
               ]),

@@ -10,12 +10,11 @@
 
 - [x] dio
 - [x] fquery
-- [ ] flutter_bloc || flutter_mobx
+- [x] GetX
 - [x] [google_nav_bar](https://pub.dev/packages/google_nav_bar)
 - [x] flutter_native_splash
 - [x] husky + commitlint
 - [x] Flutter Hooks
-- [ ] hive
 - [x] infinite_scroll_pagination
 
 ## Requirement
@@ -64,4 +63,5 @@ https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
 > flutter pub run flutter_native_splash:create
 
 ## Windows command
+
 > dart run msix:create

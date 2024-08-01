@@ -4,7 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import 'search.dart';
 import '../util/constants.dart' as constants;
 import '../components/favorite_list.dart';
-// import '../components/favorite_list_hooks.dart';
+// import '../components/favorite_list_hooks.art';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -20,9 +20,7 @@ class HomeState extends State<Home> {
   static final List<Widget> _widgetOptions = <Widget>[
     const FavoriteList(),
     const SearchPage(),
-    const Text(
-      'Profile',
-    ),
+    Text('profile'),
   ];
   @override
   Widget build(BuildContext context) {

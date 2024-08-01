@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'util/router.dart';
 import '../util/constants.dart' as constants;
-import 'package:fquery/fquery.dart'; 
+import 'package:fquery/fquery.dart';
+import 'package:get/get.dart';
+import 'package:flutter/cupertino.dart';
 
 final queryClient = QueryClient(
   defaultQueryOptions: DefaultQueryOptions(),
@@ -16,9 +18,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return GetMaterialApp(
       title: 'Espresso',
       theme: ThemeData(
+        platform: TargetPlatform.iOS,
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(
           seedColor: constants.Colors.secondary,
@@ -30,7 +33,8 @@ class MainApp extends StatelessWidget {
           backgroundColor: constants.Colors.background,
         ),
       ),
-      routerConfig: AppRouter.router,
+      getPages: AppRouter.router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

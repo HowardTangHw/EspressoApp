@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 class AppRoute extends StatefulWidget {
   const AppRoute({super.key});
@@ -22,8 +22,7 @@ class AppRouteState extends State<AppRoute> {
         Text(msg),
         ElevatedButton.icon(
           onPressed: () async {
-            final res =
-                await context.push<String?>('/tip_route', extra: 'some text');
+            final res = await Get.toNamed('/tip_route', arguments: 'test');
             if (res != null) {
               setState(() {
                 msg = res;

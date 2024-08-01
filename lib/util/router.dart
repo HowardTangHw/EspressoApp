@@ -1,4 +1,3 @@
-import 'package:go_router/go_router.dart';
 import '../pages/home.dart';
 import '../pages/app_router.dart';
 import '../pages/tip_route.dart';
@@ -6,52 +5,59 @@ import '../pages/box_list.dart';
 import '../pages/position.dart';
 import '../pages/scrollcontroller.dart';
 import '../pages/custom_scroll_view.dart';
+import '../pages/profile.dart';
+import 'package:get/get.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class AppRouter {
-  static final router = GoRouter(
-    routes: [
-      GoRoute(
-          path: '/',
-          builder: (context, state) => const Home(
-                title: 'Espresso',
-              ),
-          routes: [
-            GoRoute(
-              path: 'app_route',
-              builder: (context, state) => const AppRoute(),
-            ),
-            GoRoute(
-              path: 'tip_route',
-              builder: (context, state) {
-                final extraData = state.extra as String?;
-                return TipRoute(extraData: extraData);
-              },
-            ),
-            GoRoute(
-              path: 'box_list',
-              builder: (context, state) {
-                return BoxList();
-              },
-            ),
-            GoRoute(
-              path: 'position_example',
-              builder: (context, state) {
-                return const PositionExample();
-              },
-            ),
-            GoRoute(
-              path: 'scollcontroller_example',
-              builder: (context, state) {
-                return const ScrollControllerTestRoute();
-              },
-            ),
-            GoRoute(
-              path: 'custom_scroll_view',
-              builder: (context, state) {
-                return const CustomScrollViewPage();
-              },
-            ),
-          ]),
-    ],
-  );
+  static final router = [
+    GetPage(
+      name: '/',
+      page: () => const Home(
+        title: 'Espresso',
+      ),
+    ),
+    GetPage(
+      name: '/app_route',
+      page: () => const AppRoute(),
+    ),
+    GetPage(
+      name: '/tip_route',
+      page: () {
+        return TipRoute();
+      },
+    ),
+    GetPage(
+      name: '/box_list',
+      page: () {
+        return BoxList();
+      },
+    ),
+    GetPage(
+      name: '/position_example',
+      page: () {
+        return const PositionExample();
+      },
+    ),
+    GetPage(
+      name: '/scollcontroller_example',
+      page: () {
+        return const ScrollControllerTestRoute();
+      },
+    ),
+    GetPage(
+      name: '/custom_scroll_view',
+      page: () {
+        return const CustomScrollViewPage();
+      },
+    ),
+    GetPage(
+      name: '/profile',
+      page: () {
+        return const CupertinoScaffold(
+          body: ProfilePage(),
+        );
+      },
+    ),
+  ];
 }

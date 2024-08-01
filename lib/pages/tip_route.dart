@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 class TipRoute extends StatelessWidget {
-  const TipRoute({super.key, this.extraData});
-  final String? extraData;
+  const TipRoute({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    var text = extraData ?? "No Params";
+    var text = Get.arguments ?? "No Params";
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tips"),
@@ -19,7 +20,7 @@ class TipRoute extends StatelessWidget {
             children: <Widget>[
               Text(text),
               ElevatedButton.icon(
-                onPressed: () => context.pop("text"),
+                onPressed: () => Get.back(result: ("text")),
                 icon: const Icon(Icons.arrow_back),
                 label: const Text("Back"),
               )
