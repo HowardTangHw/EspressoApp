@@ -1,0 +1,26 @@
+name: Dart Fix Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dart-fix:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Dart SDK
+        uses: dart-lang/setup-dart@v1.5
+        with:
+          sdk: latest
+      
+      - name: Run dart fix --dry-run
+        run: dart fix --dry-run
+        
+      - name: Fail if fixes are needed
+        run: dart fix --dry-run | tee check_output.txt | (! grep 'nothing to fix')
+        continue-on-error: false
