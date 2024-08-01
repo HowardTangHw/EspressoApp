@@ -21,6 +21,7 @@ class HomeState extends State<Home> {
     const FavoriteList(),
     const SearchPage(),
     const Text('profile'),
+    Text('123'),
   ];
   @override
   Widget build(BuildContext context) {
