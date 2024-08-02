@@ -76,3 +76,11 @@ https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
 2. xcrun simctl boot "iPhone 15"
 3. flutter devices
 4. run `flutter run -d "iPhone 15" --machine`
+
+
+## Code Format & Code Analyze
+```shell
+dart format .
+dart analyze --fatal-infos
+dart fix --apply
+```

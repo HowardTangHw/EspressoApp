@@ -8,6 +8,7 @@ String formatNumber(int number) {
     return number.toString();
   }
 }
+
 var logger = Logger(
   printer: PrettyPrinter(),
 );

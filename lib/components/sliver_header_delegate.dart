@@ -42,7 +42,8 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     //测试代码：如果在调试模式，且子组件设置了key，则打印日志
     assert(() {
       if (child.key != null) {
-        logger.i('${child.key}: shrink: $shrinkOffset，overlaps:$overlapsContent');
+        logger
+            .i('${child.key}: shrink: $shrinkOffset，overlaps:$overlapsContent');
       }
       return true;
     }());
@@ -59,6 +60,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(SliverHeaderDelegate oldDelegate) {
-    return oldDelegate.maxExtent != maxExtent || oldDelegate.minExtent != minExtent;
+    return oldDelegate.maxExtent != maxExtent ||
+        oldDelegate.minExtent != minExtent;
   }
 }
