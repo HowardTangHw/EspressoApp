@@ -84,3 +84,9 @@ dart format .
 dart analyze --fatal-infos
 dart fix --apply
 ```
+
+## Android stop gradle
+```shell
+cd android
+./gradlew --stop
+```

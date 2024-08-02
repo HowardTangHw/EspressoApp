@@ -44,6 +44,13 @@
       "request": "launch",
       "program": "./lib/main.dart",
       "args": ["-d", "iPhone 15"]
+    },
+    {
+      "name": "espresso for Android",
+      "type": "dart",
+      "request": "launch",
+      "program": "./lib/main.dart",
+      "args": ["-d", "sdk gphone64 arm64"]
     }
   ]
 }
