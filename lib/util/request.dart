@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import '../util/constants.dart' as constants;
+import '../util/util.dart';
 
 class DioClient {
   static final DioClient _instance = DioClient._internal();
@@ -33,7 +34,7 @@ class DioClient {
       return response;
     } on DioException catch (e) {
       // 处理Dio错误，例如网络错误等
-      print('Get请求错误: $e');
+      logger.e('Get请求错误: $e');
       rethrow;
     }
   }
@@ -46,7 +47,7 @@ class DioClient {
       return response;
     } on DioException catch (e) {
       // 处理Dio错误，例如网络错误等
-      print('Post请求错误: $e');
+      logger.e('Post请求错误: $e');
       rethrow;
     }
   }

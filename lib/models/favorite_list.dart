@@ -1,3 +1,5 @@
+import '../util/util.dart';
+
 class FavoriteList {
   int? totalCount;
   bool? incompleteResults;
@@ -16,7 +18,7 @@ class FavoriteList {
         });
       }
     } catch (e) {
-      print('JSON解析出错: $e');
+      logger.e('JSON解析出错: $e');
     }
   }
 
