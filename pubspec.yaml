@@ -35,6 +35,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/Logo/PNG/main-logo.png
+    - assets/images/Logo/PNG/main-logo@2x.png
   fonts:
     - family: Montserrat
       fonts:
