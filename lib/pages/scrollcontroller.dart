@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../util/util.dart';
 
 class ScrollControllerTestRoute extends StatefulWidget {
   const ScrollControllerTestRoute({super.key});
@@ -19,7 +20,7 @@ class ScrollControllerTestRouteState extends State<ScrollControllerTestRoute> {
     super.initState();
     //监听滚动事件，打印滚动位置
     _controller.addListener(() {
-      print(_controller.offset); //打印滚动位置
+      logger.i(_controller.offset); //打印滚动位置
       // 下面的代码移到NotificationListener里面做了
       // if (_controller.offset < 1000 && showToTopBtn) {
       //   setState(() {

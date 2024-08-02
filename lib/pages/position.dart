@@ -16,9 +16,7 @@ class PositionExample extends StatelessWidget {
                 children: <Widget>[
                   const Positioned(
                     left: 18.0,
-                    
                     child: Text("I am Jack"),
-
                   ),
                   Container(
                     color: Colors.red,
