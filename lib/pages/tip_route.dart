@@ -10,9 +10,6 @@ class TipRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     var text = Get.arguments ?? "No Params";
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Tips"),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Center(

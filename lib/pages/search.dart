@@ -32,11 +32,6 @@ class SearchPage extends StatelessWidget {
                     child: const Text("profile")),
                 TextButton(
                     onPressed: () {
-                      Get.toNamed("/app_route");
-                    },
-                    child: const Text("open new route")),
-                TextButton(
-                    onPressed: () {
                       Get.toNamed("/box_list");
                     },
                     child: const Text("open box list")),

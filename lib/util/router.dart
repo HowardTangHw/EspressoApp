@@ -1,5 +1,4 @@
 import '../pages/home.dart';
-import '../pages/app_router.dart';
 import '../pages/tip_route.dart';
 import '../pages/box_list.dart';
 import '../pages/position.dart';
@@ -17,10 +16,6 @@ class AppRouter {
           body: Home(
         title: 'Espresso',
       )),
-    ),
-    GetPage(
-      name: '/app_route',
-      page: () => const AppRoute(),
     ),
     GetPage(
       name: '/tip_route',

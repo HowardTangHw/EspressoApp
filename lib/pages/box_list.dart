@@ -20,12 +20,9 @@ class BoxList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('GridView Example'),
-        ),
         body: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: const Text('Todo'),
-        ));
+      padding: const EdgeInsets.all(10.0),
+      child: const Text('Todo'),
+    ));
   }
 }
