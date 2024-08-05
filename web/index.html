@@ -1,7 +1,25 @@
 <html>
 <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+<meta id="theme-color-meta" name="theme-color" content="#ffffff">
 
 <head>
+
+  <script>
+    function isBrowser() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isWebView = /webview|wv/.test(userAgent);
+      const isBrowser = /chrome|firefox|safari|opera|edge|msie|trident/.test(userAgent);
+      return typeof window !== 'undefined' && typeof window.document !== 'undefined' && !isWebView && isBrowser;
+    }
+
+    // 更新状态栏颜色的函数
+    function updateStatusBarColor(color) {
+      var metaTag = document.getElementById('theme-color-meta');
+      if (metaTag && isBrowser()) {
+        metaTag.setAttribute('content', color);
+      }
+    }
+  </script>
 
 
 
