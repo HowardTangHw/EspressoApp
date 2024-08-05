@@ -90,3 +90,6 @@ dart analyze --fatal-infos
 cd android
 ./gradlew --stop
 ```
+
+## iOS and Android hide status bar
+> https://stackoverflow.com/questions/58450434/status-bar-doesnt-show-up-in-flutter
