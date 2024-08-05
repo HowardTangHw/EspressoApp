@@ -29,6 +29,7 @@ class MainApp extends StatelessWidget {
         fontFamily: 'Montserrat',
         primarySwatch: constants.Colors.primarySwatch,
         appBarTheme: const AppBarTheme(
+          surfaceTintColor: Colors.transparent,
           backgroundColor: constants.Colors.background,
         ),
       ),
