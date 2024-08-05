@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 class RepoDetailPage extends StatelessWidget {
   const RepoDetailPage({super.key});
@@ -7,10 +6,11 @@ class RepoDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: CupertinoPageScaffold(
-            navigationBar: const CupertinoNavigationBar(
-                leading: Text(''), middle: Text('Detail Page')),
-            child: SafeArea(
+        child: Scaffold(
+            appBar: AppBar(
+              title: const Text('detail page'),
+            ),
+            body: SafeArea(
               bottom: false,
               child: Column(
                 mainAxisSize: MainAxisSize.min,

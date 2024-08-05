@@ -1,4 +1,5 @@
 <html>
+<meta name="apple-mobile-web-app-status-bar-style" content="#000">
 
 <head>
 
@@ -11,13 +12,29 @@
 
     body {
       margin: 0;
+      /* min-height: 100vh;
+      min-width: 100vw;
+      background-color: #000; */
+      background-color: #000;
+    }
+
+    #splash {
+      /* background-image: url("splash/img/main-logo-black-transparent.svg"); */
+      background-position: center;
+      background-repeat: no-repeat;
       min-height: 100vh;
       min-width: 100vw;
       background-color: #BDCC92;
-      background-image: url("splash/img/main-logo.svg");
-      background-position: center;
-      background-repeat: no-repeat;
-    }
+      position:absolute;
+      left: 0;
+      top: 0;
+      right:0;
+      bottom:0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    };
+
 
     .center {
       margin: 0;
@@ -70,6 +87,7 @@
   </style>
   <script id="splash-screen-script">
     function removeSplashFromWeb() {
+      windows.alert('trigger');
       document.getElementById("splash")?.remove();
       document.getElementById("splash-branding")?.remove();
       document.body.style.background = "transparent";
@@ -78,6 +96,11 @@
 </head>
 
 <body>
+  <div id="splash">
+    <div id="splash-branding">
+      <img src="splash/img/main-logo-black-transparent.svg" />
+    </div>
+  </div>
   <script>
     {{flutter_bootstrap_js}}
   </script>

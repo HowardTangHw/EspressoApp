@@ -44,7 +44,6 @@ class ScrollControllerTestRouteState extends State<ScrollControllerTestRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("scroll controller")),
       body: Scrollbar(
         child: NotificationListener<ScrollNotification>(
             onNotification: (ScrollNotification notification) {
