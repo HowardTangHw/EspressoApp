@@ -13,9 +13,10 @@ class AppRouter {
   static final router = [
     GetPage(
       name: '/',
-      page: () => const Home(
+      page: () => const CupertinoScaffold(
+          body: Home(
         title: 'Espresso',
-      ),
+      )),
     ),
     GetPage(
       name: '/app_route',

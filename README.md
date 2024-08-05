@@ -18,7 +18,7 @@
 - [x] infinite_scroll_pagination
 - [x] MacOS
 - [x] iOS
-- [ ] Android
+- [x] Android
 - [ ] Windows
 
 ## Requirement
@@ -81,8 +81,8 @@ https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc
 ## Code Format & Code Analyze
 ```shell
 dart format .
-dart analyze --fatal-infos
 dart fix --apply
+dart analyze --fatal-infos
 ```
 
 ## Android stop gradle

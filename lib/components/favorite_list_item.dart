@@ -4,6 +4,8 @@ import '../util/constants.dart' as constants;
 import '../util/util.dart' as util;
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'favorite_list_item_tag.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import './repo_detail.dart';
 
 class Tag {
   final String count;
@@ -22,24 +24,35 @@ class FavoriteListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.grey[300]!,
-            width: 1.0,
+    onTap() {
+      return CupertinoScaffold.showCupertinoModalBottomSheet(
+          expand: true,
+          context: context,
+          backgroundColor: Colors.transparent,
+          builder: (context) => const RepoDetailPage());
+    }
+
+    return InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey[300]!,
+                width: 1.0,
+              ),
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+            ),
+            padding:
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return listItem(context, constraints.maxWidth);
+              },
+            ),
           ),
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return listItem(context, constraints.maxWidth);
-          },
-        ),
-      ),
-    );
+        ));
   }
 
   Widget listItem(BuildContext context, double maxWidth) {
