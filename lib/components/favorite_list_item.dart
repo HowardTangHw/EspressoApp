@@ -6,6 +6,9 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'favorite_list_item_tag.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import './repo_detail.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
 
 class Tag {
   final String count;
@@ -24,12 +27,18 @@ class FavoriteListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    onTap() {
-      return CupertinoScaffold.showCupertinoModalBottomSheet(
+    onTap() async {
+      if (kIsWeb) {
+        js.context.callMethod('updateStatusBarColor', ['#000']);
+      }
+      await CupertinoScaffold.showCupertinoModalBottomSheet(
           expand: true,
           context: context,
           backgroundColor: Colors.transparent,
           builder: (context) => const RepoDetailPage());
+      if (kIsWeb) {
+        js.context.callMethod('updateStatusBarColor', ['#ffffff']);
+      }
     }
 
     return GestureDetector(
