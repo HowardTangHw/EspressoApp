@@ -51,6 +51,13 @@
       "request": "launch",
       "program": "./lib/main.dart",
       "args": ["-d", "sdk gphone64 arm64"]
+    },
+    {
+      "name": "espresso for web without localhost",
+      "type": "dart",
+      "request": "launch",
+      "program": "./lib/main.dart",
+      "args": ["-d", "chrome", "--web-port=8090", "--web-hostname=0.0.0.0", "--web-enable-expression-evaluation"]
     }
   ]
 }
