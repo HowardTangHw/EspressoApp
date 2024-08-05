@@ -7,6 +7,7 @@ import 'favorite_list_item_tag.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import './repo_detail.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
 class Tag {
