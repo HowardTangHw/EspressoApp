@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class RepoDetailPage extends StatelessWidget {
   const RepoDetailPage({super.key});
@@ -10,15 +9,6 @@ class RepoDetailPage extends StatelessWidget {
         child: Scaffold(
             appBar: AppBar(
               title: const Text('detail page'),
-              systemOverlayStyle: const SystemUiOverlayStyle(
-                // Status bar color
-                statusBarColor: Colors.red,
-
-                // Status bar brightness (optional)
-                statusBarIconBrightness:
-                    Brightness.dark, // For Android (dark icons)
-                statusBarBrightness: Brightness.light, // For iOS (dark icons)
-              ),
             ),
             body: SafeArea(
               bottom: false,

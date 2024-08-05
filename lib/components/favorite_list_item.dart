@@ -25,7 +25,7 @@ class FavoriteListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     onTap() {
-      return CupertinoScaffold.showCupertinoModalBottomSheet(
+      return showBarModalBottomSheet(
           expand: true,
           context: context,
           backgroundColor: Colors.transparent,
