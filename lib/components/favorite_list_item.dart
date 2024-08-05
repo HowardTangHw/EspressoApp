@@ -31,8 +31,7 @@ class FavoriteListItem extends StatelessWidget {
           backgroundColor: Colors.transparent,
           builder: (context) => const RepoDetailPage());
     }
-
-    return InkWell(
+    return GestureDetector(
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
