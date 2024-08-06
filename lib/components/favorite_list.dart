@@ -6,8 +6,6 @@ import '../models/favorite_list.dart';
 
 // 传统的使用了infinite_scroll_pagination组件
 // 如果想要看到hooks的版本和fquery版本请查看favorite_list_hooks
-// TODO: 把listItem抽出去
-// TODO: 下拉刷新
 class FavoriteList extends StatefulWidget {
   const FavoriteList({super.key});
 
@@ -46,13 +44,17 @@ class FavoriteListState extends State<FavoriteList> {
   }
 
   @override
-  Widget build(BuildContext context) => PagedListView<int, Items>(
+  Widget build(BuildContext context) => RefreshIndicator(
+      onRefresh: () => Future.sync(
+            () => _pagingController.refresh(),
+          ),
+      child: PagedListView<int, Items>(
         pagingController: _pagingController,
         builderDelegate: PagedChildBuilderDelegate<Items>(
           itemBuilder: (context, item, index) =>
               FavoriteListItem(item: item, index: index + 1),
         ),
-      );
+      ));
 
   @override
   void dispose() {
