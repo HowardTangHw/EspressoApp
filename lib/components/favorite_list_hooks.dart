@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../hooks/favorite_list.dart' as fv;
-import '../models/favorite_list.dart';
+import 'package:espresso/hooks/favorite_list.dart' as fv;
+import 'package:espresso/models/favorite_list.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fquery/fquery.dart';
 

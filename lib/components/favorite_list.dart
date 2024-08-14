@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../hooks/favorite_list.dart' as fv;
+import 'package:espresso/hooks/favorite_list.dart' as fv;
 import './favorite_list_item.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import '../models/favorite_list.dart';
+import 'package:espresso/models/favorite_list.dart';
 
 // 传统的使用了infinite_scroll_pagination组件
 // 如果想要看到hooks的版本和fquery版本请查看favorite_list_hooks

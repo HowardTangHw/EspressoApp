@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../util/constants.dart' as constants;
-import '../components/sliver_header_delegate.dart';
+import 'package:espresso/util/constants.dart' as constants;
+import 'package:espresso/components/sliver_header_delegate.dart';
 
 class CustomScrollViewPage extends StatelessWidget {
   const CustomScrollViewPage({super.key});

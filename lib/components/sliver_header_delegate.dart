@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../util/util.dart';
+import 'package:espresso/util/util.dart';
 
 typedef SliverHeaderBuilder = Widget Function(
     BuildContext context, double shrinkOffset, bool overlapsContent);

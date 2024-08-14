@@ -1,12 +1,12 @@
 import 'package:espresso/models/favorite_list.dart';
 import 'package:flutter/material.dart';
-import '../util/constants.dart' as constants;
-import '../util/util.dart' as util;
+import 'package:espresso/util/constants.dart' as constants;
+import 'package:espresso/util/util.dart' as util;
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'favorite_list_item_tag.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import './repo_detail.dart';
-import '../util/platform_actions.dart';
+import 'package:espresso/util/platform_actions.dart';
 
 class Tag {
   final String count;

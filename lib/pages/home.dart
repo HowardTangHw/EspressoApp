@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'search.dart';
-import '../util/constants.dart' as constants;
-import '../components/favorite_list.dart';
-// import '../components/favorite_list_hooks.art';
+import 'package:espresso/util/constants.dart' as constants;
+import 'package:espresso/components/favorite_list.dart';
+// import 'package:espresso/components/favorite_list_hooks.art';
+import 'profile.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -20,7 +21,7 @@ class HomeState extends State<Home> {
   static final List<Widget> _widgetOptions = <Widget>[
     const FavoriteList(),
     const SearchPage(),
-    const Text('profile'),
+    const ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {

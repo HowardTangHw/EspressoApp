@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'util/router.dart';
-import '../util/constants.dart' as constants;
+import 'package:espresso/util/router.dart';
+import 'package:espresso/util/constants.dart' as constants;
 import 'package:fquery/fquery.dart';
 import 'package:get/get.dart';
 
