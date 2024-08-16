@@ -1,12 +1,13 @@
-import '../util/request.dart';
-import '../models/favorite_list.dart';
+import 'package:espresso/util/request.dart';
+import 'package:espresso/models/favorite_list.dart';
 import 'package:fquery/fquery.dart';
 
-Future<FavoriteList> getFavoriteList({int page = 1, int pageSize = 50}) async {
+Future<FavoriteList> getFavoriteList(
+    {int page = 1, int pageSize = 50, String? query}) async {
   final res = await DioClient().get(
     '/search/repositories',
     queryParameters: {
-      'q': 'stars:>10000',
+      'q': query ?? 'stars:>10000',
       'sort': 'stars',
       'order': 'desc',
       'per_page': pageSize,

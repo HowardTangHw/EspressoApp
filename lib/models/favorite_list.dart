@@ -1,4 +1,4 @@
-import '../util/util.dart';
+import 'package:espresso/util/util.dart';
 
 class FavoriteList {
   int? totalCount;

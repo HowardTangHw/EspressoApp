@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import '../hooks/favorite_list.dart' as fv;
+import 'package:espresso/hooks/favorite_list.dart' as fv;
 import './favorite_list_item.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import '../models/favorite_list.dart';
+import 'package:espresso/models/favorite_list.dart';
 
 // 传统的使用了infinite_scroll_pagination组件
 // 如果想要看到hooks的版本和fquery版本请查看favorite_list_hooks
 class FavoriteList extends StatefulWidget {
-  const FavoriteList({super.key});
+  final String? query;
+
+  const FavoriteList({super.key, this.query});
 
   @override
   FavoriteListState createState() => FavoriteListState();
@@ -15,6 +17,7 @@ class FavoriteList extends StatefulWidget {
 
 class FavoriteListState extends State<FavoriteList> {
   static const _pageSize = 50;
+  late String? query;
 
   final PagingController<int, Items> _pagingController =
       PagingController(firstPageKey: 1);
@@ -25,12 +28,22 @@ class FavoriteListState extends State<FavoriteList> {
       _fetchPage(pageKey);
     });
     super.initState();
+    query = widget.query;
+  }
+
+  @override
+  void didUpdateWidget(FavoriteList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.query != widget.query) {
+      query = widget.query;
+      _pagingController.refresh();
+    }
   }
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final newItems =
-          await fv.getFavoriteList(page: pageKey, pageSize: _pageSize);
+      final newItems = await fv.getFavoriteList(
+          page: pageKey, pageSize: _pageSize, query: query);
       final isLastPage = newItems.items!.length < _pageSize;
       if (isLastPage) {
         _pagingController.appendLastPage(newItems.items!);

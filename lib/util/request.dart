@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../util/constants.dart' as constants;
-import '../util/util.dart';
+import 'package:espresso/util/constants.dart' as constants;
+import 'package:espresso/util/util.dart';
 
 class DioClient {
   static final DioClient _instance = DioClient._internal();
