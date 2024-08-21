@@ -63,7 +63,8 @@ class SearchPageState extends State<SearchPage> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(color: constants.Colors.secondary), // 聚焦时的边框颜色
+                  borderSide: const BorderSide(
+                      color: constants.Colors.secondary), // 聚焦时的边框颜色
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
