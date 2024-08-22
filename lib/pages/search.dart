@@ -14,20 +14,18 @@ class SearchPageState extends State<SearchPage> {
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   String query = '';
-  String _printCurrentValue() {
+
+  void _updateQuery() {
     logger.i(_controller.text);
     setState(() {
       query = _controller.text;
     });
-    return _controller.text;
   }
 
   @override
   void initState() {
     super.initState();
-    _focusNode.addListener(() {
-      setState(() {}); // 更新状态以刷新界面
-    });
+    _focusNode.addListener(() => setState(() {}));
   }
 
   @override
@@ -36,59 +34,72 @@ class SearchPageState extends State<SearchPage> {
     super.dispose();
   }
 
+  InputDecoration _buildInputDecoration() {
+    return InputDecoration(
+      labelText: "Search Key Words",
+      contentPadding:
+          const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+      labelStyle: TextStyle(
+        color: _focusNode.hasFocus
+            ? constants.Colors.secondary
+            : constants.Colors.primary,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: constants.Colors.primary),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: constants.Colors.secondary),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: constants.Colors.primary),
+      ),
+      suffixIcon: Container(
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.only(right: 8),
+          decoration: BoxDecoration(
+              color: _focusNode.hasFocus
+                  ? constants.Colors.secondary
+                  : Colors.transparent,
+              shape: BoxShape.circle),
+          child: GestureDetector(
+              onTap: _updateQuery, child: const Icon(Icons.search))),
+    );
+  }
+
+  Widget _buildGradientOverlay() {
+    return Positioned.fill(
+      child: IgnorePointer(
+          child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+        Colors.white.withOpacity(0.2),
+        Colors.white.withOpacity(0),
+        Colors.white.withOpacity(0.4)
+      ], begin: Alignment.topCenter, end: Alignment.bottomCenter)))),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-        child: Column(children: [
-          TextField(
-            focusNode: _focusNode,
-            // autofocus: true,
-            controller: _controller,
-            onSubmitted: (value) {
-              logger.i(value);
-              _printCurrentValue();
-            },
-            decoration: InputDecoration(
-                labelText: "Search Key Words",
-                hintText: "",
-                labelStyle: TextStyle(
-                  color: _focusNode.hasFocus
-                      ? constants.Colors.secondary
-                      : constants.Colors.primary, // 根据焦点状态设置颜色
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30), // 设置圆角边框的半径
-                  borderSide: const BorderSide(color: constants.Colors.primary),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                      color: constants.Colors.secondary), // 聚焦时的边框颜色
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                      color: constants.Colors.primary), // 未选中状态边框颜色
-                ),
-                suffixIcon: Container(
-                  padding: const EdgeInsets.all(8.0), // 背景颜色的内边距
-                  margin: const EdgeInsets.only(right: 20),
-                  decoration: BoxDecoration(
-                    color: _focusNode.hasFocus
-                        ? constants.Colors.secondary
-                        : Colors.transparent, // 背景颜色
-                    shape: BoxShape.circle, // 设置背景为圆形
-                  ),
-                  child: GestureDetector(
-                    child: const Icon(Icons.search),
-                    onTap: () => {_printCurrentValue()},
-                  ),
-                )),
-          ),
-          Expanded(
-            child: query.isNotEmpty ? FavoriteList(query: query) : Container(),
-          ),
-        ]));
+    return Column(children: [
+      Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+          child: TextField(
+              focusNode: _focusNode,
+              controller: _controller,
+              onSubmitted: (value) {
+                logger.i(value);
+                _updateQuery();
+              },
+              decoration: _buildInputDecoration())),
+      Expanded(
+          child: Stack(children: [
+        if (query.isNotEmpty) FavoriteList(query: query),
+        _buildGradientOverlay()
+      ])),
+    ]);
   }
 }
